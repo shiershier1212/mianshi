@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 35px;
+            background-color: antiquewhite;
+            margin: 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="year"></span>
+        <span class="month"></span>
+        <span class="day"></span>
+        <span class="hour"></span>
+        <span class="minu"></span>
+        <span class="sec"></span>
+    </div>
+    <script>
+        const yearSpan = document.querySelector('.year'),
+            monthSpan = document.querySelector('.month'),
+            daySpan = document.querySelector('.day'),
+            hourSpan = document.querySelector('.hour'),
+            minuSpan = document.querySelector('.minu'),
+            secSpan = document.querySelector('.sec')
+
+        function countTime(str) {
+            let milliSec = new Date(str).getTime() - Date.now()
+            if (milliSec < 0) { return 0 }
+            let year = Math.floor(milliSec / 1000 / 60 / 60 / 24 / 365)
+            let month = Math.floor(milliSec / 1000 / 60 / 60 / 24 / 30 % 12)
+            let day = Math.floor(milliSec / 1000 / 60 / 60 / 24)
+            let hour = Math.floor(milliSec / 1000 / 60 / 60 % 23)
+            let minu = Math.floor(milliSec / 1000 / 60 % 60)
+            let sec = Math.floor(milliSec / 1000 % 60)
+
+            yearSpan.innerHTML = year + '年'
+            monthSpan.innerHTML = month + '月'
+            daySpan.innerHTML = day + '天'
+            hourSpan.innerHTML = hour + '时'
+            minuSpan.innerHTML = minu + '分'
+            secSpan.innerHTML = sec + '秒'
+        }
+        setInterval(() => {
+            countTime('2028-3-29')
+        }, 1000)
+
+    </script>
+</body>
+
+</html>

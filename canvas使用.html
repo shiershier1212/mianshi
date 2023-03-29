@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .canvas {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        //创建context对象
+        let ctx = canvas.getContext("2d");
+        // fillStyle属性可以用来设置css属性
+        // ctx.fillStyle = "rgba(0,43,25)"
+        //fillRect设置填充方式，前两个0是指坐标（0,0),就是画布的左上角，
+        //后两个参数是需要绘制的长和宽
+        // ctx.fillRect(0, 0, 100, 100)
+
+        ctx.font = "40px Arial";
+        //绘制字体
+        ctx.fillText("hello world", 20, 40)
+        //绘制空心字体
+        ctx.strokeText("hello world", 20, 40)
+    </script>
+</body>
+
+</html>
