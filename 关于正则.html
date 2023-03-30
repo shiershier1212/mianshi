@@ -17,7 +17,6 @@
         let con = prompt("输入内容检测")
         let reg = new RegExp(con, "g")
         let div = document.querySelector("div")
-        
         //将 从字符串中找到的字符进行替换，替换的内容可以是一个回调函数，
         div.innerHTML = div.innerHTML.replace(reg, search => {
             return `<span style="color:red">${search}</span>`
