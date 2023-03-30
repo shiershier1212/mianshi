@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用正则将字符高亮</title>
+</head>
+
+<body>
+    <div class="content">
+        houdunren.com
+    </div>
+    <script>
+        //得到输入内容
+        let con = prompt("输入内容检测")
+        let reg = new RegExp(con, "g")
+        let div = document.querySelector("div")
+        
+        //将 从字符串中找到的字符进行替换，替换的内容可以是一个回调函数，
+        div.innerHTML = div.innerHTML.replace(reg, search => {
+            return `<span style="color:red">${search}</span>`
+        })
+    </script>
+</body>
+
+</html>
