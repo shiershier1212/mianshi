@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>使用正则将字符高亮</title>
+    <title>正则</title>
 </head>
 
 <body>
-    <div class="content">
+    <!-- 高亮 -->
+    <!-- <div class="content">
         houdunren.com
     </div>
     <script>
@@ -20,6 +21,38 @@
         //将 从字符串中找到的字符进行替换，替换的内容可以是一个回调函数，
         div.innerHTML = div.innerHTML.replace(reg, search => {
             return `<span style="color:red">${search}</span>`
+        })
+    </script> -->
+
+    <!-- 用户名验证 -->
+    <!-- 用户名：<input type="text" name="username">
+    <span></span>
+    <script>
+        document.querySelector('[name="username"]').addEventListener("keyup", e => {
+            const val = e.target.value;
+            let reg = /^[a-z][\w-]{3,6}$/i
+            document.querySelector("span").innerText = reg.test(val) ? "正确" : "错误"
+        })
+    </script> -->
+
+    <br>
+
+    <!-- 密码验证 -->
+    密码：<input type="text" name="password">
+    <span></span>
+    <script>
+        document.querySelector('[name="password"]').addEventListener('keyup', e => {
+            const val = e.target.value;
+            let regs = [
+                /^[0-9a-z]{6,16}$/i,
+                /[A-Z]/,
+                /[0-9]/
+            ]
+            let flag = regs.every(e => {
+                // console.log(val.match(e));
+                return e.test(val)
+            })
+            document.querySelector("span").innerText = flag ? "正确" : "错误"
         })
     </script>
 </body>

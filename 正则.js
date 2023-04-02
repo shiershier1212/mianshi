@@ -111,16 +111,93 @@
 // console.log(psw.match(/^\w{11,16}$/));
 
 //url 解析
-// let url = "myUrl@key1=name&key2=age&key3=password"
+// let url = 'myUrl@key1=name&key2=age&key3=password';
 // console.log(url.match(/\W/g));
 // console.log(url.match(/@/g));
-// let url2 = url.substring(url.match(/@/).index+1)
+// let url2 = url.substring(url.match(/@/).index + 1);
 // // console.log(url.substring(url.match(/@/).index+1));
-// let arr = url2.split("&")
-// let res = {}
+// let arr = url2.split('&');
+// let res = {};
 // // console.log(url2.split("&"));
-// for(let i = 0; i < arr.length; i++){
-//     let a = arr[i].split("=")
-//     res[a[0]] = a[1]
+// for (let i = 0; i < arr.length; i++) {
+// 	let a = arr[i].split('=');
+// 	res[a[0]] = a[1];
 // }
 // console.log(res);
+// console.log(url.replace(/\w*@/, '')); //去除@前的东西
+
+//多行修正,并解构出字符
+// let hd = `
+//     #1 js,200元 #
+//     #2 php,300元 #
+//     #9 houdunren.com # 后盾人
+//     #3 node.js,180元 #
+
+// `;
+// let res = hd.match(/^\s*#\d+\s+.+\s+#$/gm).map((a) => {
+// 	a = a.replace(/^\s*#\d+\s+/, '').replace(/\s+#/, '');
+// 	[myName, price] = a.split(','); //解构赋值
+// 	return { myName, price };
+// });
+// console.log(res);
+// console.log(JSON.stringify(res));
+
+
+//匹配中文
+// let str = '234一二三四五六七八shier,ew?sdf.你好'
+// console.log(str.match(/\p{L}/gu)); //匹配所有字符
+// console.log(str.match(/\p{P}/gu)); //匹配所有标点符号
+// console.log(str.match(/\p{sc=Han}/gu)); //匹配所有中文
+
+//使用原子组
+// let str = `
+//     <h1>
+//         houdunren
+//         </h1>
+//     <h2>hdcms</h2>
+// `
+// // console.log(str.match(/<h[1-6]>[\s\S]*<\/h[1-6]>/gi));
+// console.dir(str.match(/<(h[1-6])>[\s\S]*<\/\1>/i));
+// console.dir(str.match(/<(h[1-6])>[\s\S]*<\/\1>/gi));
+
+
+//邮箱匹配
+// let mail = '4235sf453-4@q-q.com'
+// let mail = '4235sf453-4@q-q.com.cn'
+// console.log(mail.match(/^[\w-]+@[\w-]+\.(com|org|cn|net)$/));
+// console.log(mail.match(/^[\w-]+@([\w-]+\.)+(com|org|cn|net)$/));
+
+//原子组完成 字符替换
+// let str = `
+//     <h1>houdunren</h1>
+//     <span>后盾人</span>
+//     <h2>hdcms</h2>
+// `
+// let reg = /<(h[1-6])>([\s\S]+)<\/\1>/gi
+// console.log(str.replace(reg,'<p>$2</p>')); //把<h1>houdunren</h1> 替换成 <p>houdunren</p>，$2表第二个原子组
+
+// let reg1 = /<h[1-6]>/g
+// let reg2 = /<\/h[1-6]>/g
+// str = str.replace(reg1,'<p>').replace(reg2,'<p>')
+// console.log(str);
+
+
+//域名提取 不记录组
+// let url = `
+//     https://www.houdunen.com
+//     http://baidu.com
+//     http://google.cn
+// `
+// let reg = /https?:\/\/((w*\.)?\w+\.(com|org|cn|net))/gi
+// let reg = /https?:\/\/((?:w*\.)?\w+\.(?:com|org|cn|net))/gi
+// console.dir(url.match(reg));
+// console.dir(reg.exec(url));
+// console.log(reg.lastIndex);
+// console.dir(reg.exec(url));
+// console.log(reg.lastIndex);
+// console.dir(reg.exec(url));
+// console.log(reg.lastIndex);
+// while(res = reg.exec(url)){
+//     console.log(res[1]);
+// }
+
