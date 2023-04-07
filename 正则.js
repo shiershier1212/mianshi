@@ -201,3 +201,29 @@
 //     console.log(res[1]);
 // }
 
+
+// 先行断言
+let str = '1313131aZ$'
+let reg = /(?=\d)/
+// console.log(str.match(reg));
+// console.log(reg.test(str));
+// let reg2 = /(?=\d)(?=\w)/ 
+// console.log(reg.test(reg2));
+// regs = [
+//     // /(?=\d)/,
+//     // /(?=\w)/,
+//     // /[0-9a-zA-z]+/
+//     /[0-9]+/,
+//     /[a-z]+/,
+//     /[A-Z]+/,
+//     /[^!#$%^&*()+=\-[\]\\\';,/{}|\":<>?~_]/g
+// ]
+
+// let f = regs.every((e)=>{
+//     return e.test(str)
+// })
+// console.log('f :', f);
+
+// console.log(/[^$]*/.test('str$'));
+// console.log('str$'.match(/[^$]*/));
+

@@ -1,4 +1,4 @@
-let str = 'shier';
+//let str = 'shier';
 
 // // console.log(str.includes('sht'));
 // // console.log(str[0]);
