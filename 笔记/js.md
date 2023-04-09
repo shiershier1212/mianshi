@@ -12,6 +12,9 @@ object->string->number<-boolean。最终可以转换到number。
 ## js数据类型
 1. 基本数据类型：Number,Boolean,String,null,undefined,BigInt,Symbol 7种。 放在栈中。
 2. 引用数据类型：Object,Array等。放在堆中。
+3. 如何判断：
+   1. console.log(typeof [1,2,3]); 
+   2. console.log([1,2,4] instanceof Array);
 
 ## arguments
 1. 一个对象，存储着函数传入的参数。

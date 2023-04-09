@@ -74,7 +74,8 @@ methods: {
           this.$EventBus.$off('lufei')
         }
     ```
-## vuex
+
+# vuex
 1. Vuex实现了一个单向数据流，在全局拥有一个State存放数据，当组件要更改State中的数据时，必须通过Mutation进行，Mutation同时提供了订阅者模式供外部插件调用获取State数据的更新。而当所有异步操作(常见于调用后端接口异步获取更新数据)或批量的同步操作需要走Action，但Action也是无法直接修改State的，还是需要通过Mutation来修改State的数据。最后，根据State的变化，渲染到视图上。
    - 改变状态的唯一途径就是提交mutations。
    - 如果是异步的，就触发(dispatch)action，本质还是提交mutations。
@@ -83,3 +84,42 @@ methods: {
 
 
 # 动态路由
+1.  路由分为两大模块
+    1.  静态路由：登录页，主页，404等 不需要权限的页面
+    2.  动态路由：需要权限管理的页面
+    3.  默认为静态路由
+2.  在获取到用户信息后
+    1.  用户信息中包括当前用户能访问的权限页面的数据
+    2.  通过动态路由匹配出能访问的路由信息
+    3.  通过addRoutes动态添加到路由上
+3.  路由添加参数
+    1.  params传参，显示参数：
+    ```javascript 
+    {
+      path: '/child/:id',
+      component: Child
+    }
+    <router-link :to="/child/123">进入Child路由</router-link>
+    ```
+    2.  params传参，不显示参数：
+    ```javascript
+    <router-link :to="{name:'Child',params:{id:123}}">进入路由</router-link>
+    ```
+    3.  query传参：
+    ```javascript 
+    {
+      path: '/child,
+      name: 'Child',
+      component: Child
+    }
+    <router-link :to="{name:'Child',query:{id:123}}">进入Child路由</router-link>
+    ```
+
+
+# diff算法
+1. 框架会将所有的结点先转化为虚拟节点Vnode，在发生更改后将VNode和原本页面的OldNode进行对比，然后以VNode为基准，在oldNode上进行准确的修改；根据真实DOM生成虚拟DOM树，发生修改时，依据虚拟DOM树对真实DOM树进行修改。
+
+# computed 与 watch 的区别
+1. computed是计算属性，依赖其他属性值，并且有缓存，只要他依赖的值发生改变了，下一次获取computed的值时才会重新计算computed的值
+2. watch更多的是监听观察作用，支持异步，每当监听的数值发生变化时就会立即回调进行后续操作。
+

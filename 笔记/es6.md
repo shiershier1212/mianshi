@@ -14,7 +14,8 @@
 
 1. 数组中取值
 2. 对象中取值
-3. 交换两个变量的值
+3. 交换两个变量的值。（注意交换时，添加分号，不然会出错）
+4. 
 
 # 拓展运算符
 
@@ -32,40 +33,38 @@
 
 1. promise:
  promise有三种状态：pending,fulfilled,rejected
- 当promise的状态改变时，会立即调用then方法（相当于then方法一直在监听该promise），除了then，还有catch和finall
+  当promise的状态改变时，会立即调用then方法（相当于then方法一直在监听该promise），除了then，还有catch和final
 
 ``` javascript
-<script>
 let promise = new Promise(function (resolve, reject) {
- if(true){
-  resolve("success");//改变promise的状态
- }
- else {
-  reject("failure");//出错
- }
+    if (true) {
+        resolve("success");//改变promise的状态
+    }
+    else {
+        reject("failure");//出错
+    }
 });
-promise.then(res =>{//当promise状态改变时执行该方法
- console.log(res);
-}).catch(err=>{//当promise出错时执行该方法
- console.log(err);
-}).finally(function(){});//总会执行该方法
-</script>
+promise.then(res => {//当promise状态改变时执行该方法
+    console.log(res);
+}).catch(err => {//当promise出错时执行该方法
+    console.log(err);
+}).finally(function () { });//总会执行该方法
 ```
     promise.all()对所有的异步方法进行操作
     promise.race()会返回 结果获得最快 的那个  
  ``` javascript
- let p1 = new Promise(function (resolve, reject) {
- setTimeout(()=>{resolve("success")},2000);
+let p1 = new Promise(function (resolve, reject) {
+    setTimeout(() => { resolve("success") }, 2000);
 });
 let p2 = new Promise(function (resolve, reject) {
- setTimeout(()=>{reject("fail")},400);
+    setTimeout(() => { reject("fail") }, 400);
 });
-Promise.race([p1,p2]).then(res=>{//比较race里面的方法，看谁快，快的先返回结果
- console.log(res);
-}).catch(err=>{
- console.log(err);
+Promise.race([p1, p2]).then(res => {//比较race里面的方法，看谁快，快的先返回结果
+    console.log(res);
+}).catch(err => {
+    console.log(err);
 })
-```
+ ```
 
 2. async
  在函数前面加上async表示 异步调用，会返回一个promise对象，
