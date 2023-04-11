@@ -10,8 +10,38 @@
 
 <body>
     <script>
-        
-        console.log(window.orientation);
+
+        var canPermutePalindrome = function (s) {
+            let arr = s.split('').sort();
+            // console.log('arr :', arr);
+            let obj = {}
+            arr.forEach((e) => {
+                let keys = Object.keys(obj)
+                if (keys.includes(e)) {
+                    obj[e]++
+                } else {
+                    obj[e] = 1
+                }
+            })
+            console.log(obj);
+            let num = 0;
+            for (k in obj) {
+                if (obj[k] == 1) {
+                    num++
+                }
+            }
+            console.log(num);
+            if (num > 1) {
+                return false
+            } else {
+                return true
+            }
+        };
+
+        // let a = canPermutePalindrome("tactcoa")
+        let r = canPermutePalindrome("aaaaaaaaaabbbbbbbbbbbccccccccccc")
+        console.log('r :', r);
+
     </script>
 </body>
 
